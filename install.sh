@@ -19,6 +19,8 @@ echo -n "Partition:    "
 if [ "${DO_PARTITION}" == "Y" ]; then echo "YES"; else echo "NO"; fi
 echo -n "Format:       "
 if [ "${DO_FORMAT}" == "Y" ]; then echo "YES"; else echo "NO"; fi
+echo -n "EFI Entryy:   "
+if [ "${DO_EFI_ENTRY}" == "Y" ]; then echo "YES"; else echo "NO"; fi
 echo -n "Mount:        "
 if [ "${DO_MOUNT}" == "Y" ]; then echo "YES"; else echo "NO"; fi
 echo -n "OS Install:   "
@@ -27,6 +29,7 @@ echo -n "Essential:    "
 if [ "${DO_ESSENTIAL_INSTALL}" == "Y" ]; then echo "YES"; else echo "NO"; fi
 echo -n "Nonessential: "
 if [ "${DO_FORMAT}" == "Y" ]; then echo "YES"; else echo "NO"; fi
+if [ "${DO_UNMOUNT}" == "Y" ]; then echo "YES"; else echo "NO"; fi
 
 echo -n "Proceed? (y/n) "
 read CONTINUE_INSTALL
@@ -56,6 +59,13 @@ if [ "${DO_FORMAT}" == "Y" ]; then
 	mkfs.ext4 "${OS_ROOT_PART}"
 else
 	echo "XXX FORMAT PARTITIONS (skip)"
+fi
+
+if [ "${DO_EFI_ENTRY}" == "Y" ]; then
+	echo "--- EFI ENTRY"
+	efibootmgr --create --disk "/dev/${OS_HD_NAME}" --part 1 --label "Arch Linux" --loader /vmlinux-linux --unicode "root=${OS_ROOT_PART} resume=${OS_SWAP_PART} rw initrd=\initramfs-linux.img"
+else
+	echo "XXX EFI ENTRY (skip)"
 fi
 
 if [ "${DO_MOUNT}" == "Y" ]; then

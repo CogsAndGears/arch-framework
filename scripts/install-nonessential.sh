@@ -36,3 +36,11 @@ if [ -f "${OS_INSTALL_DIR}/extra.sh" ]; then
 else
 	echo "No user script at ${OS_INSTALL_DIR}/extras.sh; skipping"
 fi
+
+######
+# set up hibernation
+# add `resume` to hooks right before fsck
+sed -i 's!^\(HOOKS=.*\)\( \)\(fsck.*\)!\1 resume \3!' 
+# recompile mkinitcpio
+mkinitcpio -p linux
+
