@@ -36,9 +36,35 @@ ALL_PACKAGES=\
 #     libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev \
 #     lzma lzma-dev tk-dev uuid-dev zlib1g-dev
 PYTHON_BUILD_UTILITIES=\
-	zlib\
+	# lcov
+	lcov\
+	# pkg-config
+	pkgconf\
+	# libbz2-dev
+	bzip2\
+	# libffi-dev
+	libffi\
+	# libgdbm-dev
+	# libgdbm-compat-dev
+	gdbm\
+	# liblzma-dev
+	xz\
+	# libncurses5-dev <-- must be installed via AUR
+	# libreadline6-dev
+	readline\
+	# libsqlite3-dev
+	sqlite\
+	# libssl-dev
 	openssl\
-
+	# lzma <-- must be installed via AUR
+	# lzma-dev
+	# tk-dev
+	tk\
+	# uuid-dev
+	util-linux\
+	util-linux-libs\
+	# zlib1g-dev
+	zlib
 
 BUILD_UTILITIES=\
 	pkgfile\
