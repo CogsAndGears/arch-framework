@@ -70,6 +70,7 @@ BUILD_UTILITIES=\
 	pkgfile\
 	base-devel\
 	gdb\
+	cmake\
 	${PYTHON_BUILD_UTILITIES}
 
 $INSTALL ${ALL_PACKAGES}
