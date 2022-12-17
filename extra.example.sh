@@ -22,7 +22,9 @@ EXTRA_UTILITIES=\
 	firefox\
 	emacs\
 	vscode\
-	discord
+	discord\
+	curl\
+	wget
 
 ALL_PACKAGES=\
 	${DESKTOP_REQ}\
@@ -89,9 +91,3 @@ cp /etc/xdg/xfce4/xinitrc /home/${OS_USERNAME}/.xinitrc
 # Disable auto-light detection/brightness adjustment in favour of maniual adjustment. Currently
 # it seems to be a one or the other situation
 cp ${OS_INSTALL_PATH}/conf/modprobe.d/* /etc/modprobe.d/.
-
-######
-# Configure AUR
-pacman -S base-devel
-
-git clone 

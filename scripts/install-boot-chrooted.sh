@@ -24,4 +24,4 @@ pacman -S --noconfirm dhcpcd iwd
 systemctl enable iwd
 systemctl enable dhcpcd
 
-
+echo -e "127.0.0.1\tlocalhost\n::1\tlocalhost" >> /etc/hosts
