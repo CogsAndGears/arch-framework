@@ -1,3 +1,17 @@
+# Some user-specific configuration
+
+# Configuration for samba share
+export OS_NAS_NAME=grandarchives
+export OS_NAS_IP=
+export OS_SAMBA_NAME=grandarchives
+export OS_SAMBA_PATH=//grandarchives/GrandArchives
+export OS_SAMBA_MOUNT="/mnt/grandarchives"
+export OS_SAMBA_USERNAME=
+export OS_SAMBA_PASSWORD=
+
+######
+# Rest of setup
+
 INSTALL=pacman -S --noconfirm
 
 XFCE_REQ=\
@@ -24,7 +38,9 @@ EXTRA_UTILITIES=\
 	vscode\
 	discord\
 	curl\
-	wget
+	wget\
+  nfs-utils\
+  smbclient
 
 ALL_PACKAGES=\
 	${DESKTOP_REQ}\
@@ -91,3 +107,13 @@ cp /etc/xdg/xfce4/xinitrc /home/${OS_USERNAME}/.xinitrc
 # Disable auto-light detection/brightness adjustment in favour of maniual adjustment. Currently
 # it seems to be a one or the other situation
 cp ${OS_INSTALL_PATH}/conf/modprobe.d/* /etc/modprobe.d/.
+
+# Configuration for samba share
+touch /etc/samba/smb.conf
+mkdir /etc/samba/credentials.d
+SAMBA_CREDENTIALS_LOCATION="/etc/samba/credentials.d/${OS_SAMBA_NAME}"
+echo -e "username=${OS_SAMBA_USERNAME}\npassword=${OS_SAMBA_PASSWORD}" > "${SAMBA_CREDENTIALS_LOCATION}"
+chmod 600 ${SAMBA_CREDENTIALS_LOCATION}
+echo "${OS_NAS_IP} ${OS_NAS_NAME}" >> /etc/hosts
+echo "//${OS_SAMBA_PATH} ${OS_SAMBA_MOUNT} cifs credentials=${SAMBA_CREDENTIALS_LOCATION}" >> /etc/fstab
+
