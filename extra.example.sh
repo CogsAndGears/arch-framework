@@ -35,7 +35,8 @@ EXTRA_UTILITIES=\
 	curl\
 	wget\
   nfs-utils\
-  smbclient
+  smbclient\
+  zsh
 
 ALL_PACKAGES=\
 	${DESKTOP_REQ}\
@@ -103,3 +104,6 @@ cp /etc/xdg/xfce4/xinitrc /home/${OS_USERNAME}/.xinitrc
 # it seems to be a one or the other situation
 cp ${OS_INSTALL_PATH}/conf/modprobe.d/* /etc/modprobe.d/.
 
+######
+# Set zsh as default shell
+usermod --shell /usr/bin/zsh cogs
