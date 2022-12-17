@@ -12,7 +12,11 @@ XFCE_REQ=\
 	# needed to manage sound devices
 	pavucontrol\
 	# application search bar
-	synapse
+	synapse\
+  # file system management
+  gvfs\
+  # removable drive management
+  thunar-volman
 
 KDE_REQ=\
 	plasma-desktop\

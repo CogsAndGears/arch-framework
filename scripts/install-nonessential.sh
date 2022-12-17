@@ -49,3 +49,11 @@ else
 	echo "No user script at ${OS_INSTALL_DIR}/extras.sh; skipping"
 fi
 
+######
+# Set up flash drive mounting
+pacman -S --noconfirm\
+  udisks2
+
+usermod -a -G storage
+
+usermod -a -G storage
