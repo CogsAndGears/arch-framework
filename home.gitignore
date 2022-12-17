@@ -1,0 +1,47 @@
+# Anywhere
+.git
+*.bak*
+
+# Desktop files
+/Desktop
+/Documents
+/Downloads
+/Music
+/Pictures
+/Public
+/Templates
+/Videos
+
+# / (root)
+/.global.gitignore
+/.bash_history
+/.python_history
+/.vim
+/.vimrc
+/dev
+/.build
+/.app
+
+/.cache
+
+# application-specific ignores
+/.nvm
+/.npm
+
+# vscode
+/.config/Code - OSS
+
+discord-webrtc*
+/.config/discord
+
+# kde file-indexing and searching framework
+/.local/share/baloo
+
+/.mozilla
+
+/.viminfo
+/.config/nvim
+/.local/share/nvim
+
+/.local/share/xorg/**/*.log
+/.config/xfce4/desktop/icons.screen.latest.rc
