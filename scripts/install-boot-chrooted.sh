@@ -2,22 +2,29 @@
 # Installation of core components that will be needed to run the system. After this point
 # we could actually start the computer and install the rest, if we felt like it
 
+set -e
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source ${SCRIPT_DIR}/env.sh
+source ${SCRIPT_DIR}/../env.sh
 
 # set root password
 usermod --password "${OS_ROOT_PASSWORD}" root
 
-echo "Setting time zone to: ${TIME_ZONE}"
-ln -sf ${TIME_ZONE}
-echo "Generating /etc/adjtime
+echo "Setting time zone to: ${OS_TIME_ZONE}"
+ln -sf "/usr/share/zoneinfo/${OS_TIME_ZONE}" /etc/localtime
+echo "Generating /etc/adjtime"
 hwclock --systohc
 echo "Setting locale to: ${OS_LOCALE}"
-echo "LANG=${LOCALE}" > /etc/locale.conf
+echo "LANG=${OS_LOCALE}" > /etc/locale.conf
 echo "Setting keymap to: ${OS_KEYMAP}"
-echo "KEYMAP=${KEYMAP}" > /etc/vconsole.conf
-echo "Setting Hostname to: "${OS_HOSTNAME}"
+echo "KEYMAP=${OS_KEYMAP}" > /etc/vconsole.conf
+echo "Setting Hostname to: ${OS_HOSTNAME}"
 echo "${OS_HOSTNAME}" > /etc/hostname
+
+# regenerate pacman keys now that we have the timezone set
+rm -rf /etc/pacman.d/gnupg
+pacman-key --init
+pacman-key --populate
 
 echo "Installing wireless managers"
 pacman -S --noconfirm dhcpcd iwd

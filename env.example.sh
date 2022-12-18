@@ -7,8 +7,11 @@
 export OS_USERNAME=
 # These should be pre-hashed passwords; generate via:
 # $ openssl passwd -1 <PASSWORD>
-export OS_ROOT_PASSWORD=
-export OS_USER_PASSWORD=
+OS_ROOT_PASSWORD_PLAINTEXT=T3rriblev1bes
+OS_USER_PASSWORD_PLAINTEXT=omoshir01
+export OS_ROOT_PASSWORD=openssl passwd -1 "${OS_ROOT_PASSWORD_PLAINTEXT}"
+export OS_USER_PASSWORD=openssl passwd -1 "${OS_USER_PASSWORD_PLAINTEXT}"
+export OS_HOSTNAME=lappy486
 
 ###############################
 # ACTION VALUES
@@ -22,6 +25,7 @@ export OS_USER_PASSWORD=
 export DO_PARTITION=N
 # Format the three expected partitions on the hard drive.
 export DO_FORMAT=N
+export DO_EFI_ENTRY=N
 # Mount the three expected partitions on the hard drive. Disable if you have a different
 # partition schema
 export DO_MOUNT=N
@@ -49,9 +53,9 @@ export OS_SWAP_PART="/dev/${OS_HD_NAME}p2"
 export OS_ROOT_PART="/dev/${OS_HD_NAME}p3"
 # This will by default create three partitions: EFI, swap, and root. These are the
 # ranges for each. The partitions are created in this order
-export OS_UEFI_PARTITION_RANGE=1MiB 513MiB
-export OS_SWAP_PARTITION_RANGE=514MiB 38GiB
-export OS_ROOT_PARTITION_RANGE=39GiB 100%
+export OS_UEFI_PARTITION_RANGE="1MiB 513MiB"
+export OS_SWAP_PARTITION_RANGE="514MiB 38GiB"
+export OS_ROOT_PARTITION_RANGE="39GiB 100%"
 
 ###############################
 # KNOWN VALUES
