@@ -43,6 +43,7 @@ EXTRA_UTILITIES=$(cat <<ENDVAR
 	nfs-utils
 	smbclient
 	zsh
+	chromium
 ENDVAR
 )
 
