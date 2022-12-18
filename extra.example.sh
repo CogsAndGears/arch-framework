@@ -12,7 +12,9 @@ XFCE_REQ=$(cat <<ENDVAR
 	pavucontrol
 	synapse
 	gvfs
+	gvfs-smb
 	thunar-volman
+	thunar-archive-plugin
 ENDVAR
 )
 
@@ -44,8 +46,28 @@ EXTRA_UTILITIES=$(cat <<ENDVAR
 	smbclient
 	zsh
 	chromium
+	vlc
+	unzip
 ENDVAR
 )
+
+# COMMENTS
+# robotfindskitten - No distro is complete without it.
+# git - version management
+# konsole - Common terminal app that I got used to
+# firefox - internet
+# emacs - Best OS a text editor could ask for
+# vscode - generally useful
+# discord - talk to strangers online
+# curl - make network requests from command line
+# wget - slightly easier interface than curl if you're just downloading a file
+# nfs-utils - mount network file shares
+# smbclient - mount samba clients from terminal
+# zsh - preferred shell
+# chromium - mostly for work purposes
+# vlc - good video player
+# gvfs gvfs-smb - mount samba shares from Thunar (xfce file browser). In url bar: `smb://<user>@<server>/<sharename>`
+# unzip - unzip stuff
 
 
 # debian-equivalent packages for fully featured python build from source
@@ -124,3 +146,10 @@ cp ${OS_INSTALL_DIR}/conf/modprobe.d/* /etc/modprobe.d/.
 ######
 # Set zsh as default shell
 usermod --shell /usr/bin/zsh cogs
+
+######
+# Create a folder for user-installed packages and utilities
+if [ ! -d /srv/app ]; then
+	mkdir --parents /srv/app
+fi
+chown -R ${OS_USERNAME}:${OS_USERNAME} /srv/app
