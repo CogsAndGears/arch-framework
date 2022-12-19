@@ -35,7 +35,7 @@ DESKTOP_REQ=${XFCE_REQ}
 EXTRA_UTILITIES=$(cat <<ENDVAR
 	robotfindskitten
 	git
-	konsole
+	kitty
 	firefox
 	emacs
 	vscode
@@ -48,13 +48,16 @@ EXTRA_UTILITIES=$(cat <<ENDVAR
 	chromium
 	vlc
 	unzip
+	dotnet-runtime
+	dotnet-sdk
+	aspnet-runtime
 ENDVAR
 )
 
 # COMMENTS
 # robotfindskitten - No distro is complete without it.
 # git - version management
-# konsole - Common terminal app that I got used to
+# kitty - Terminal emulator
 # firefox - internet
 # emacs - Best OS a text editor could ask for
 # vscode - generally useful
