@@ -51,6 +51,13 @@ EXTRA_UTILITIES=$(cat <<ENDVAR
 	dotnet-runtime
 	dotnet-sdk
 	aspnet-runtime
+	docker
+	docker-compose
+  pipewire
+  pipewire-pulse
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-emoji
 ENDVAR
 )
 
@@ -71,7 +78,7 @@ ENDVAR
 # vlc - good video player
 # gvfs gvfs-smb - mount samba shares from Thunar (xfce file browser). In url bar: `smb://<user>@<server>/<sharename>`
 # unzip - unzip stuff
-
+# pipewire - Audio management
 
 # debian-equivalent packages for fully featured python build from source
 # Usually would be installed with:
@@ -156,3 +163,8 @@ if [ ! -d /srv/app ]; then
 	mkdir --parents /srv/app
 fi
 chown -R ${OS_USERNAME}:${OS_USERNAME} /srv/app
+
+######
+# Set up docker group
+groupadd docker
+usermod -a -G docker ${OS_USERNAME}
