@@ -46,3 +46,8 @@ $ bluetoothctl
 Sometimes you'll want to find an equivalent package in pacman to one that exists in another package manager, such as debian. For these instances, find the package on debian's site: `https://packages.debian.org/<SEARCH_TERM>` and find the file list for one of the distributions.
 
 Pick a file that seems reasonable, and use `pkgfile -s <FILE_NAME>` to see whether that file can be found in any of the known pacman repositories.
+
+## Installing from AUR
+First clone the repository, or pull if you are updating an existing package.
+
+Then `cd` into the directory and run `makepkg -scri`. It will build the package and then, at the end, ask for your password to install it. `c` will clean the build artifacts afterwards, `r` will remove any installed dependencies that were needed as part of the build process.
