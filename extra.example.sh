@@ -58,6 +58,9 @@ EXTRA_UTILITIES=$(cat <<ENDVAR
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
+  remmina
+  libvncserver
+  freerdp
 ENDVAR
 )
 
@@ -79,6 +82,10 @@ ENDVAR
 # gvfs gvfs-smb - mount samba shares from Thunar (xfce file browser). In url bar: `smb://<user>@<server>/<sharename>`
 # unzip - unzip stuff
 # pipewire - Audio management
+#
+# remmina - remote desktop access utility
+# libvncserver - vnc support (for remmina)
+# freerdp - rdp support (for remmina)
 
 # debian-equivalent packages for fully featured python build from source
 # Usually would be installed with:
