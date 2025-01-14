@@ -14,3 +14,8 @@ For the most part this is so that it is easier for me to nuke my Arch install an
 6. Copy and edit the `env.example.sh` script to `env.sh` and adjust values, as necessary
 7. Copy and edit the `extra.example.sh` script to `extra.sh` and modify any additional installation steps or packages, as necessary
 6. Run `./install.sh`
+
+
+# Updating a system without doing the full install
+
+If you are transferring your hard drive to a new computer and the boot media is not showing up, then you probably need to add the efi record. The command for this can be found in `install.sh` by searching for `EFI`.
