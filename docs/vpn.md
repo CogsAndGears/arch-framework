@@ -46,3 +46,5 @@ Some more commands
 sudo systemctl status wg-quick@wg0
 sudo systemctl enable wg-quick@wg0 # to start it when the computer starts
 ```
+
+You can name the files however you like, and the part before the `.conf` will be the interface name.
