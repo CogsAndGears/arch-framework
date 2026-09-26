@@ -19,3 +19,8 @@ For the most part this is so that it is easier for me to nuke my Arch install an
 # Updating a system without doing the full install
 
 If you are transferring your hard drive to a new computer and the boot media is not showing up, then you probably need to add the efi record. The command for this can be found in `install.sh` by searching for `EFI`.
+
+# Modern arch linux installation guide
+
+-> https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae
+

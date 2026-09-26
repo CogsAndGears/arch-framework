@@ -21,4 +21,15 @@ $ bluetoothctl
 [bluetooth] pair UUID
 [bluetooth] trust UUID
 [bluetooth] connect UUID
+[bluetooth] remove UUID
+```
+
+# Troubleshooting
+
+## Temporary failure in name resolution
+
+Sometimes when coming back up from sleep the network card takes a while to re-initialize, or just refuses to come back up at all. I'm still not really sure why. Typically forcing a network re-scan coerces it into coming back.
+
+```bash
+sudo iwctl station wlan0 scan && sudo iwctl station wlan0 get-networks
 ```
